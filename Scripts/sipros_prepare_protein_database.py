@@ -158,7 +158,12 @@ def reverse_protein_database(input_file_str, output_file_str, all_config_dict) :
 
 ## Parse config file
 def parse_config(config_filename):
-
+    """
+    Parses the config file by implementing the parseconfig.py script. The parseConfigKEyValues function
+    parses a config file for any key values, appends them into a dictionary and returns the key values
+    in the dictionary dictConfigKeyValues.
+    :return: all_config_dict -- a dictionary of config key values
+    """
     # Save all config values to dictionary
     all_config_dict = {}    # initialize dictionay
     # Save config values to dictionary
