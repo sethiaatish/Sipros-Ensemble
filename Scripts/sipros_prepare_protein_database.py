@@ -28,7 +28,11 @@ curr_time = sipros_post_module.curr_time
 format_time = sipros_post_module.format_time
 
 def parse_options(argv):
-
+    """
+    Prepares the input, output, and config file names and prints them to the console. Returns
+    a SystemExit 1 error if the system cannot detect or set the file names.
+    :return: input_filename, output_filename, and config_filename -- the three options set by the module
+    """
     opts, _args = getopt.getopt(argv[1:], "hi:o:c:")
 
     output_filename = ""
