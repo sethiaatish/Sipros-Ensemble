@@ -31,8 +31,16 @@ def parse_options(argv):
     """
     Prepares the input, output, and config file names and prints them to the terminal interface.
     Returns a SystemExit 1 error if the system cannot detect or set the file names.
-    :return: input_filename, output_filename, and config_filename -- the three options set by 
-    the module
+    
+    Parameters:
+    -----------
+    argv: list
+    
+    Returns:
+    --------
+    input_filename: str
+    output_filename: str 
+    config_filename: str
     """
 
     opts, _args = getopt.getopt(argv[1:], "hi:o:c:")
@@ -73,10 +81,17 @@ def parse_options(argv):
 
 def reverse_protein_database(input_file_str, output_file_str, all_config_dict):
     """
-    Creates a reverse protein database by accepting the input file and output file, which are then
-    used to read data from the input file and write it to the output file. Prior to database creation,
-    all_config_dict is used to retrieve key values for creating the database/adjusting match
-    probability.
+    Creates a a database of reverse protein sequences to act as protein decoys for
+    matching functions later. Writes results to the selected output file.
+    
+    Parameters:
+    -----------
+    input_file_str: str
+        The name of the input file.
+    output_file_str: str
+        The name of the output file.
+    all_config_dict: dict
+        A dictionary of important key values, prepared with parseoptions.py.
     """
     
     probability_1 = 0.5
@@ -167,10 +182,18 @@ def reverse_protein_database(input_file_str, output_file_str, all_config_dict):
 ## Parse config file
 def parse_config(config_filename):
     """
-    Parses the config file by implementing the parseconfig.py script. The parseConfigKeyValues function
-    parses a config file for any key values, appends them into a dictionary and returns the key values
-    in the dictionary dictConfigKeyValues.
-    :return: all_config_dict -- a dictionary of config key values
+    Parses the config file by implementing the parseconfig.py script, which parses the inteneded
+    config file for any key values, appends them into a dictionary and returns them.
+    
+    Parameters:
+    -----------
+    config_filename: str
+        The name of the intended config file.
+    
+    Return:
+    -------
+    all_config_dict: dict
+        A dictionary of appeneded config key values.
     """
 
     # Save all config values to dictionary
