@@ -9,6 +9,7 @@ appended
 Created by Xuan Guo on 02/20/2017.
 Copyright (c) 2017 Xuan Guo (ORNL). Allrights reserved.
 """
+from __future__ import (absolute_import, division, print_function, unicode_literals)
 
 ## Import Python package modules
 import sys, getopt, os, random
