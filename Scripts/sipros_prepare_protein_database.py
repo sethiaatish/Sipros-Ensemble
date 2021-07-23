@@ -29,10 +29,12 @@ format_time = sipros_post_module.format_time
 
 def parse_options(argv):
     """
-    Prepares the input, output, and config file names and prints them to the console. Returns
-    a SystemExit 1 error if the system cannot detect or set the file names.
-    :return: input_filename, output_filename, and config_filename -- the three options set by the module
+    Prepares the input, output, and config file names and prints them to the terminal interface.
+    Returns a SystemExit 1 error if the system cannot detect or set the file names.
+    :return: input_filename, output_filename, and config_filename -- the three options set by 
+    the module
     """
+
     opts, _args = getopt.getopt(argv[1:], "hi:o:c:")
 
     output_filename = ""
@@ -69,7 +71,13 @@ def parse_options(argv):
     return input_filename, output_filename, config_filename
 
 
-def reverse_protein_database(input_file_str, output_file_str, all_config_dict) :
+def reverse_protein_database(input_file_str, output_file_str, all_config_dict):
+    """
+    Creates a reverse protein database by accepting the input file and output file, which are then
+    used to read data from the input file and write it to the output file. Prior to database creation,
+    all_config_dict is used to retrieve key values for creating the database/adjusting match
+    probability.
+    """
     
     probability_1 = 0.5
     probability_2 = 1
@@ -159,11 +167,12 @@ def reverse_protein_database(input_file_str, output_file_str, all_config_dict) :
 ## Parse config file
 def parse_config(config_filename):
     """
-    Parses the config file by implementing the parseconfig.py script. The parseConfigKEyValues function
+    Parses the config file by implementing the parseconfig.py script. The parseConfigKeyValues function
     parses a config file for any key values, appends them into a dictionary and returns the key values
     in the dictionary dictConfigKeyValues.
     :return: all_config_dict -- a dictionary of config key values
     """
+
     # Save all config values to dictionary
     all_config_dict = {}    # initialize dictionay
     # Save config values to dictionary
