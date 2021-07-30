@@ -66,15 +66,15 @@ fi
 
 # Generate PSM table
 if [ "$TabFile" == "" ]; then
-TabFile=$(python2 ${exePath}/sipros_psm_tabulating.py -i ${SipFolder}/ -c ${ConfigureFile} -o ${OutputFolder}/)
+TabFile=$(python ${exePath}/sipros_psm_tabulating.py -i ${SipFolder}/ -c ${ConfigureFile} -o ${OutputFolder}/)
 fi
 
 # PSM Filtering
 # echo ${TabFile}
-python2 ${exePath}/sipros_ensemble_filtering.py -i ${TabFile} -c ${ConfigureFile} -o ${OutputFolder}/
+python ${exePath}/sipros_ensemble_filtering.py -i ${TabFile} -c ${ConfigureFile} -o ${OutputFolder}/
 
 # Protein Assembly
-python2 ${exePath}/sipros_peptides_assembling.py -w ${OutputFolder}/ -c ${ConfigureFile}
+python ${exePath}/sipros_peptides_assembling.py -w ${OutputFolder}/ -c ${ConfigureFile}
 
 # Protein SIP mode clustering
-python2 ${exePath}/ClusterSip.py -w ${OutputFolder}/ -c ${ConfigureFile}
+python ${exePath}/ClusterSip.py -w ${OutputFolder}/ -c ${ConfigureFile}
