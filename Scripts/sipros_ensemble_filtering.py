@@ -1350,7 +1350,7 @@ def generate_Prophet_features_test(lPsm, config_dict):
 ## Exit system with error message
 def die(msg=None):
     if msg is not None:
-        print >> sys.stderr, msg
+        print(sys.stderr, msg)
         sys.exit(1)
 
 ## Check file exist
@@ -1359,7 +1359,7 @@ def check_file_exist(filename):
     try:
         with open(filename) as _f: pass
     except IOError as _e:
-        print >> sys.stderr, '\nCannot open', filename
+        print(sys.stderr, '\nCannot open', filename)
         die("Program exit!")
 
 ## parameters used to read configuration file
