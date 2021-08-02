@@ -37,4 +37,4 @@ for i in range (filenum) :
 drive, path_and_file = os.path.splitdrive(OriginalFastaFileName)
 path, file = os.path.split(path_and_file)
 (pathRoot, pathExt) = os.path.splitext(file)
-print os.path.join(outputpath, pathRoot)
+print(os.path.join(outputpath, pathRoot))
