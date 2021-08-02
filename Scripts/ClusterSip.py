@@ -33,7 +33,7 @@ def parse_options(argv):
     # Basic options
     for option, value in opts:
         if option in ("-h", "--help"):
-            print "-c configurefile -w workingdirectory"
+            print("-c configurefile -w workingdirectory")
             sys.exit(1)
         if option in ("-w", "--working-dir"):
             working_dir = value
@@ -73,12 +73,12 @@ def get_file_list_with_ext(working_dir, file_ext):
                 file_list.append(file_path_name)
 
         if len(file_list) == 0:
-            print >> sys.stderr, "\nCannot open %s file(s)." % (file_ext)
+            print(sys.stderr, "\nCannot open %s file(s)." % (file_ext))
             die("Program exit!")
         file_list = sorted(file_list)
 
     else:
-        print >> sys.stderr, "\nCannot open working directory", working_dir
+        print(sys.stderr, "\nCannot open working directory", working_dir)
         die("Program exit!")
 
     return file_list
@@ -88,7 +88,7 @@ def getColumnId(sColumnNameLine, ColumnName) :
 	try:
 		iColumnId = ColumnName_list.index(ColumnName)
 	except ValueError:
-		print "can't find column "+ColumnName
+		print("can't find column "+ColumnName)
 		sys.exit(0)
 	#print iColumnId
 	return iColumnId
@@ -276,8 +276,8 @@ def HandleFiles(psmFileName) :
 		if (currentLine.startswith("+") and (bPassProteinFormatLine) ) :
 			if (len(proteinData) > 0) :
 				#clusterSpectrum(proteinData)
-			        (allProteinLines, allSpectrumLines) = clusterSpectrum(proteinData, iProteinId_ColumnId, iProteinDescription_ColumnId, iSearchName_ColumnId, iProteinName_ColumId)
-			        if len(allProteinLines) > 0:
+			    (allProteinLines, allSpectrumLines) = clusterSpectrum(proteinData, iProteinId_ColumnId, iProteinDescription_ColumnId, iSearchName_ColumnId, iProteinName_ColumId)
+			    if len(allProteinLines) > 0:
 					allProteinLineData.append(allProteinLines)
 					allSpectrumLineData.append(allSpectrumLines)
 				#for i in range(len(allProteinLines)) :
