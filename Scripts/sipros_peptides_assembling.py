@@ -13,7 +13,6 @@ Copyright (c) 2012 Tae-Hyuk Ahn (ORNL). Allrights reserved.
 """
 
 ## Import standard modules
-from __future__ import division
 import sys, getopt, warnings, os, re
 from datetime import datetime, date, time
 from collections import defaultdict
@@ -262,8 +261,8 @@ def read_fasta_file(working_dir, config_dict):
                 with open(fasta_filename_dir) as f: pass
                 fasta_file = open(fasta_filename_dir, 'r')
             except:
-                print >> sys.stderr, '\nCannot open', fasta_filename
-                print >> sys.stderr, 'Check your config file!'
+                print(sys.stderr, '\nCannot open', fasta_filename)
+                print(sys.stderr, 'Check your config file!')
                 die("Program exit!")
 
     # save the fasta ID and description to the fasta_ID_dict
@@ -341,8 +340,8 @@ def read_fasta_necessary_file(working_dir, config_dict, pro_greedy_list):
                 with open(fasta_filename_dir) as f: pass
                 fasta_file = open(fasta_filename_dir, 'r')
             except:
-                print >> sys.stderr, '\nCannot open', fasta_filename
-                print >> sys.stderr, 'Check your config file!'
+                print(sys.stderr, '\nCannot open', fasta_filename)
+                print(sys.stderr, 'Check your config file!')
                 die("Program exit!")
 
     # save the fasta ID and description to the fasta_ID_dict
