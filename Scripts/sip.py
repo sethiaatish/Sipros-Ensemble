@@ -15,7 +15,7 @@ def parse_options(argv):
                                      "config-file"])
 
     # Error handling of options
-    except getopt.error, msg:
+    except getopt.error as msg:
         raise Usage(msg)
 
     # Default working dir and config file
@@ -25,7 +25,7 @@ def parse_options(argv):
     # Basic options
     for option, value in opts:
         if option in ("-h", "--help"):
-            print "-c configure file -w working directory"
+            print("-c configure file -w working directory")
 	    sys.exit(0)
         if option in ("-w", "--working-dir"):
             working_dir = value
@@ -121,7 +121,7 @@ def main(argv=None):
 	sEnrichmentLevelIncrement = wholeDict.get("[Stable_Isotope_Probing]Enrichment_Level_Increment")
 
 	if ((sMaxEnrichmentLevel == None) or (sMinEnrichmentLevel == None) or (sEnrichmentLevelIncrement == None)) :
-		print "Enrichment level information is incomplete."
+		print("Enrichment level information is incomplete.")
 		sys.exit(0)
 	dMaxEnrichmentLevel  =  float(sMaxEnrichmentLevel[0:-1])/100
 	dMinEnrichmentLevel  =  float(sMinEnrichmentLevel[0:-1])/100
@@ -130,21 +130,21 @@ def main(argv=None):
 	sSIPElement = wholeDict.get("[Stable_Isotope_Probing]SIP_Element")
 	sSIPElementIsotope = wholeDict.get("[Stable_Isotope_Probing]SIP_Element_Isotope")
 	if ((sSIPElement == None) or (sSIPElementIsotope == None)) :
-		print "SIP information is incomplete."
+		print("SIP information is incomplete.")
 		sys.exit(0)
 	iSIPElementIsotope = int(sSIPElementIsotope)
 	#print sSIPElement, iSIPElementIsotope
 	sElementMasses = wholeDict.get("[Peptide_Identification]Element_Masses{"+sSIPElement+"}")
 	sElementPercent = wholeDict.get("[Peptide_Identification]Element_Percent{"+sSIPElement+"}")
 	if ((sElementMasses == None) or (sElementPercent == None)) :
-		print "[Peptide_Identification]Element {"+sSIPElement+"}" + "is not available"
+		print("[Peptide_Identification]Element {"+sSIPElement+"}" + "is not available")
 		sys.exit(0)
 	sElementMasses   = sElementMasses.strip(",")
 	sElementPercent  = sElementPercent.strip(",")
 	lsElementMasses  = sElementMasses.split(",")
 	lsElementPercent = sElementPercent.split(",")
 	if (len(lsElementMasses) != len(lsElementPercent)) or (len(lsElementMasses) == 1):
-		print "The number of elements is wrong"
+		print("The number of elements is wrong")
 		sys.exit(0)
 	ldElementPercent = []
 	iSipElementIndex = -1
@@ -153,10 +153,10 @@ def main(argv=None):
 		if (int(round(float(lsElementMasses[i])))  ==  iSIPElementIsotope) :
 			iSipElementIndex = i
 	if (iSipElementIndex == -1) :
-		print "can't find the target element parcent."
+		print("can't find the target element parcent.")
 		sys.exit(0)
 	if (iSipElementIndex == 0) :#################################
-		print "The first element can't be the target."
+		print("The first element can't be the target.")
 		sys.exit(0)
 	GenerateSipConfig(config_filename, working_dir, lsElementPercent, dMaxEnrichmentLevel, 
 		dMinEnrichmentLevel, dEnrichmentLevelIncrement, iSipElementIndex, sSIPElement, iSIPElementIsotope)
