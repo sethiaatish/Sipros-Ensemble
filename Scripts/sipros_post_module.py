@@ -47,7 +47,7 @@ class CommentedFile:
 # # Exit system with error message
 def die(msg=None):
     if msg is not None:
-        print >> sys.stderr, msg
+        print(sys.stderr, msg)
         sys.exit(1)
 
 
@@ -80,7 +80,7 @@ def divide(x, y):
     try:
         result = x / y
     except ZeroDivisionError as detail:
-        print >> sys.stderr, 'Handling run-time error:', detail
+        print(sys.stderr, 'Handling run-time error:', detail)
         die('Program exit!')
     else:
         return result
@@ -92,7 +92,7 @@ def check_file_exist(filename):
     try:
         with open(filename) as _f: pass
     except IOError as _e:
-        print >> sys.stderr, '\nCannot open', filename
+        print(sys.stderr, '\nCannot open', filename)
         die("Program exit!")
 
 
@@ -113,12 +113,12 @@ def get_file_list_with_ext(working_dir, file_ext):
                 file_list.append(file_path_name)
 
         if len(file_list) == 0:
-            print >> sys.stderr, "\nCannot open %s file(s)." % (file_ext)
+            print(sys.stderr, "\nCannot open %s file(s)." % (file_ext))
             die("Program exit!")
         file_list = sorted(file_list)
 
     else:
-        print >> sys.stderr, "\nCannot open working directory", working_dir
+        print(sys.stderr, "\nCannot open working directory", working_dir)
         die("Program exit!")
 
     return file_list
@@ -422,7 +422,7 @@ def peptide_delete_residues(peptide_string):
 
         return peptide_output
     except AttributeError:
-        print >> sys.stderr, '\nCannot parse peptide correctly.\n'
+        print(sys.stderr, '\nCannot parse peptide correctly.\n')
         die("Program exit!")
 
 
@@ -962,7 +962,7 @@ class Spe2PepReader(Process):
                 skip_comment(oFile, iLineHeader=2)
                 lFileReader.append(oFile)
             # # peek the first scan number
-            iSmallestScanNumer = sys.maxint
+            iSmallestScanNumer = sys.maxsize
             for f in lFileReader:
                 sLine = peek_line(f)
                 iScanNumber = get_scan_number(sLine)
