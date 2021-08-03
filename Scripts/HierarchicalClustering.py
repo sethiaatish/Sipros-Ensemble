@@ -16,7 +16,7 @@ def mergeClosestClusters (CandidateCluster, distanceThreshold) :
 		averageFirst  = sum(CandidateCluster[i])/float(len(CandidateCluster[i]))
 		averageSecond = sum(CandidateCluster[i+1])/float(len(CandidateCluster[i+1]))
 		if (averageFirst > averageSecond) :
-			print "wrong rank!"
+			print("wrong rank!")
 			sys.exit(0) 
 		currentDistance = averageSecond - averageFirst
 		if ( currentDistance  <= distanceThreshold) :
